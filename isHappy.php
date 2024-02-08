@@ -19,8 +19,19 @@ isHappy('1222'); // false
 isHappy('054702'); // true
 isHappy('00'); // true
 */
-function isHappy($string) {
-    $leftSum = $string[0] + $string[1] + $string[2];
-    $rightSum = $string[3] + $string[4] + $string[5];
-    return $leftSum == $rightSum ? true : false; 
+function isHappy($string)
+{
+    $length = strlen($string);
+    if ($length % 2 !== 0 || $length == 0) {
+        return false;
+    }
+    $halfLength = $length / 2;
+    $leftSum = 0;
+    $rightSum = 0;
+    for ($i = 0; $i < $halfLength; $i++) {
+        $leftSum += intval($string[$i]);
+        $rightSum += intval($string[$halfLength + $i]);
+    }
+
+    return $leftSum == $rightSum;
 }
