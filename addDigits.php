@@ -28,13 +28,15 @@ addDigits(38); // 2
 
 function addDigits($number) {
     $string = strval($number);
-    $sum = 0;
+    strlen($string) > 1 ? $sum = 0 : $sum = $number; 
     while (strlen($string) > 1) {
-        $sum = 0;
         for ($i = 0; $i < strlen($string); $i++) {
             $sum += $string[$i];
         }
         $string = strval($sum);
+        if (strlen($string) > 1) {
+			$sum = 0;
+		}
     }
     return $sum;
 }
